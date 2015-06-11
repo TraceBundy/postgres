@@ -114,9 +114,9 @@ typedef struct Query
 	int			resultRelation; /* rtable index of target relation for
 								 * INSERT/UPDATE/DELETE; 0 for SELECT */
 
-	bool		hasAggs;		/* has aggregates in tlist or havingQual */
+	bool		hasAggs;		//聚合函数/* has aggregates in tlist or havingQual */
 	bool		hasWindowFuncs; /* has window functions in tlist */
-	bool		hasSubLinks;	/* has subquery SubLink */
+	bool		hasSubLinks;	//子连接/* has subquery SubLink */
 	bool		hasDistinctOn;	/* distinctClause is from DISTINCT ON */
 	bool		hasRecursive;	/* WITH RECURSIVE was specified */
 	bool		hasModifyingCTE;	/* has INSERT/UPDATE/DELETE in WITH */
@@ -128,7 +128,7 @@ typedef struct Query
 	List	   *rtable;			/* list of range table entries */
 	FromExpr   *jointree;		/* table join tree (FROM and WHERE clauses) */
 
-	List	   *targetList;		/* target list (of TargetEntry) */
+	List	   *targetList;		//要进行连接的表， 存放FROM WHERE子句信息， 其中的quals 存放where子句/* target list (of TargetEntry) */
 
 	List	   *withCheckOptions;		/* a list of WithCheckOption's */
 
@@ -136,20 +136,20 @@ typedef struct Query
 
 	List	   *returningList;	/* return-values list (of TargetEntry) */
 
-	List	   *groupClause;	/* a list of SortGroupClause's */
+	List	   *groupClause;	/* group by 子句 使用SortGroupClause的结构体 a list of SortGroupClause's */
 
 	List	   *groupingSets;	/* a list of GroupingSet's if present */
 
-	Node	   *havingQual;		/* qualifications applied to groups */
+	Node	   *havingQual;		/* having 条件 qualifications applied to groups */
 
 	List	   *windowClause;	/* a list of WindowClause's */
 
 	List	   *distinctClause; /* a list of SortGroupClause's */
 
-	List	   *sortClause;		/* a list of SortGroupClause's */
+	List	   *sortClause;		/* odery by 子句 a list of SortGroupClause's */
 
-	Node	   *limitOffset;	/* # of result tuples to skip (int8 expr) */
-	Node	   *limitCount;		/* # of result tuples to return (int8 expr) */
+	Node	   *limitOffset;	/* limit 限定 子句 # of result tuples to skip (int8 expr) */
+	Node	   *limitCount;		/* # limit 限定数值 of result tuples to return (int8 expr) */
 
 	List	   *rowMarks;		/* a list of RowMarkClause's */
 
