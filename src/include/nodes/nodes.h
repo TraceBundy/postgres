@@ -25,7 +25,7 @@
  */
 typedef enum NodeTag
 {
-	T_Invalid = 0,
+	T_Invalid = 0, //无效节点
 
 	/*
 	 * TAGS FOR EXECUTOR NODES (execnodes.h)
@@ -41,6 +41,7 @@ typedef enum NodeTag
 	/*
 	 * TAGS FOR PLAN NODES (plannodes.h)
 	 */
+	 //查询计划相关节点
 	T_Plan = 100,
 	T_Result,
 	T_ModifyTable,
@@ -56,22 +57,22 @@ typedef enum NodeTag
 	T_BitmapIndexScan,
 	T_BitmapHeapScan,
 	T_TidScan,
-	T_SubqueryScan,
-	T_FunctionScan,
+	T_SubqueryScan, //子查询
+	T_FunctionScan,//函数
 	T_ValuesScan,
 	T_CteScan,
 	T_WorkTableScan,
 	T_SampleScan,
 	T_ForeignScan,
 	T_CustomScan,
-	T_Join,
+	T_Join, //连接
 	T_NestLoop,
 	T_MergeJoin,
 	T_HashJoin,
 	T_Material,
 	T_Sort,
 	T_Group,
-	T_Agg,
+	T_Agg, //聚合
 	T_WindowAgg,
 	T_Unique,
 	T_Hash,
@@ -88,6 +89,7 @@ typedef enum NodeTag
 	 *
 	 * These should correspond one-to-one with Plan node types.
 	 */
+	 //查询计划状态
 	T_PlanState = 200,
 	T_ResultState,
 	T_ModifyTableState,
@@ -117,8 +119,8 @@ typedef enum NodeTag
 	T_HashJoinState,
 	T_MaterialState,
 	T_SortState,
-	T_GroupState,
-	T_AggState,
+	T_GroupState, //分组状态
+	T_AggState, //聚合状态
 	T_WindowAggState,
 	T_UniqueState,
 	T_HashState,
@@ -129,14 +131,14 @@ typedef enum NodeTag
 	/*
 	 * TAGS FOR PRIMITIVE NODES (primnodes.h)
 	 */
-	T_Alias = 300,
-	T_RangeVar,
-	T_Expr,
+	T_Alias = 300, //别名
+	T_RangeVar, //
+	T_Expr, //表达式
 	T_Var,
-	T_Const,
+	T_Const, //代价
 	T_Param,
 	T_Aggref,
-	T_GroupingFunc,
+	T_GroupingFunc, //分组函数
 	T_WindowFunc,
 	T_ArrayRef,
 	T_FuncExpr,
@@ -146,8 +148,8 @@ typedef enum NodeTag
 	T_NullIfExpr,
 	T_ScalarArrayOpExpr,
 	T_BoolExpr,
-	T_SubLink,
-	T_SubPlan,
+	T_SubLink, //子连接
+	T_SubPlan, //子计划
 	T_AlternativeSubPlan,
 	T_FieldSelect,
 	T_FieldStore,
@@ -156,7 +158,7 @@ typedef enum NodeTag
 	T_ArrayCoerceExpr,
 	T_ConvertRowtypeExpr,
 	T_CollateExpr,
-	T_CaseExpr,
+	T_CaseExpr, //case 表达式
 	T_CaseWhen,
 	T_CaseTestExpr,
 	T_ArrayExpr,
@@ -185,6 +187,7 @@ typedef enum NodeTag
 	 * These correspond (not always one-for-one) to primitive nodes derived
 	 * from Expr.
 	 */
+	 //表达式状态
 	T_ExprState = 400,
 	T_GenericExprState,
 	T_WholeRowVarExprState,
@@ -217,12 +220,13 @@ typedef enum NodeTag
 	/*
 	 * TAGS FOR PLANNER NODES (relation.h)
 	 */
+	 //查询优化相关节点
 	T_PlannerInfo = 500,
 	T_PlannerGlobal,
 	T_RelOptInfo,
 	T_IndexOptInfo,
 	T_ParamPathInfo,
-	T_Path,
+	T_Path, //路径
 	T_IndexPath,
 	T_BitmapHeapPath,
 	T_BitmapAndPath,
@@ -277,16 +281,16 @@ typedef enum NodeTag
 	 * TAGS FOR STATEMENT NODES (mostly in parsenodes.h)
 	 */
 	T_Query = 700,
-	T_PlannedStmt,
-	T_InsertStmt,
-	T_DeleteStmt,
-	T_UpdateStmt,
-	T_SelectStmt,
+	T_PlannedStmt, 
+	T_InsertStmt, //插入语句
+	T_DeleteStmt, //删除语句
+	T_UpdateStmt, //更新语句
+	T_SelectStmt, //查询语句
 	T_AlterTableStmt,
 	T_AlterTableCmd,
 	T_AlterDomainStmt,
 	T_SetOperationStmt,
-	T_GrantStmt,
+	T_GrantStmt,   //授权语句
 	T_GrantRoleStmt,
 	T_AlterDefaultPrivilegesStmt,
 	T_ClosePortalStmt,
@@ -294,7 +298,7 @@ typedef enum NodeTag
 	T_CopyStmt,
 	T_CreateStmt,
 	T_DefineStmt,
-	T_DropStmt,
+	T_DropStmt, 
 	T_TruncateStmt,
 	T_CommentStmt,
 	T_FetchStmt,
@@ -383,11 +387,11 @@ typedef enum NodeTag
 	 * TAGS FOR PARSE TREE NODES (parsenodes.h)
 	 */
 	T_A_Expr = 900,
-	T_ColumnRef,
+	T_ColumnRef, //字段
 	T_ParamRef,
 	T_A_Const,
-	T_FuncCall,
-	T_A_Star,
+	T_FuncCall, //函数
+	T_A_Star, //*
 	T_A_Indices,
 	T_A_Indirection,
 	T_A_ArrayExpr,
@@ -430,6 +434,7 @@ typedef enum NodeTag
 	/*
 	 * TAGS FOR REPLICATION GRAMMAR PARSE NODES (replnodes.h)
 	 */
+	 //复制功能
 	T_IdentifySystemCmd,
 	T_BaseBackupCmd,
 	T_CreateReplicationSlotCmd,

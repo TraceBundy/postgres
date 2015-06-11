@@ -44,10 +44,10 @@ typedef struct ListCell ListCell;
 
 typedef struct List
 {
-	NodeTag		type;			/* T_List, T_IntList, or T_OidList */
-	int			length;
-	ListCell   *head;
-	ListCell   *tail;
+	NodeTag		type;			//列表的类型/* T_List, T_IntList, or T_OidList */
+	int			length;			//链表的长度
+	ListCell   *head;			//链表的头部
+	ListCell   *tail;			//链表的尾
 } List;
 
 struct ListCell
@@ -57,8 +57,8 @@ struct ListCell
 		void	   *ptr_value;
 		int			int_value;
 		Oid			oid_value;
-	}			data;
-	ListCell   *next;
+	}			data; //union来定义数据的对象
+	ListCell   *next; //下一个兄弟节点
 };
 
 /*
